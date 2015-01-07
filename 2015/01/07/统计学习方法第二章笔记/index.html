@@ -88,7 +88,7 @@
 <ol>
 <li>选取初值$w_0$, $b_0$</li>
 <li>在训练集中选取数据$(x_i, y_i)$</li>
-<li>如果$y_i(w \cdot x_i + b) \leq 0$ $$w \gets w + \eta y_i x_i$$ $$b \gets b + \eta y_i$$</li>
+<li>如果$y_i(w \cdot x_i + b) \leq 0$<br>\begin{align}<br>&amp; w \gets w + \eta y_i x_i \<br>&amp; b \gets b + \eta y_i \<br>\end{align}</li>
 <li>转至2，直至训练集中没有误分类点。</li>
 </ol>
 </blockquote>
