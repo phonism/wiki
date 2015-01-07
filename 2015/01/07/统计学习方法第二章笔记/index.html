@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Phonism</title>
+  <title>统计学习方法第二章笔记 | Phonism</title>
   <meta name="author" content="Qi Lu">
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+  <meta name="description" content="感知机
+感知机时二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。
+感知机模型
+感知机定义：$f(x) = sign(w  x + b)$w和b称为感知机模型参数，w叫做权值向量，b叫做偏置，wx叫做w和x的内积，sign是符号函数。
+感知机是一种线性分类模型，属于">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="统计学习方法第二章笔记"/>
   <meta property="og:site_name" content="Phonism"/>
 
   
@@ -45,7 +49,7 @@
   <div class="container" id="container">
 	<div class="content">
 	  <div class="page-header">		
-  <h1><a class="brand" href="/wiki/">Phonism</a><span class="split"></span><span class="title">Hello World</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> Jan 7 2015</span></h1>
+  <h1><a class="brand" href="/wiki/">Phonism</a><span class="split"></span><span class="title">统计学习方法第二章笔记</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> Jan 7 2015</span></h1>
 </div>		
 
 <div class="row page">
@@ -67,24 +71,19 @@
 	
 
 	  <!-- content -->
-	  <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+	  <h1 id="感知机">感知机</h1>
+<p>感知机时二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。</p>
+<h2 id="感知机模型">感知机模型</h2>
+<p>感知机定义：<br>$f(x) = sign(w <em> x + b)$<br>w和b称为感知机模型参数，w叫做权值向量，b叫做偏置，w</em>x叫做w和x的内积，sign是符号函数。</p>
+<p>感知机是一种线性分类模型，属于判别模型。</p>
+<h2 id="感知机学习策略">感知机学习策略</h2>
+<h3 id="数据集的线性可分">数据集的线性可分</h3>
+<p>如果存在某个超平面S$$w*x+b=0$$能够将数据集的正实例点和负实例点完全正确地划分到超平面的两侧，则数据集为线性可分数据集。</p>
+<h3 id="感知机学习策略-1">感知机学习策略</h3>
+<p>为了找到能分割数据集的超平面，即确定感知机模型的参数w,b，需要确定一个学习策略，即定义损失函数并将素食函数极小化。损失函数为误分类点到超平面S的总距离。损失函数L(w,b)是w,b的连续可导函数。</p>
+<h2 id="感知机学习算法">感知机学习算法</h2>
+<h2 id="感知机学习算法的原始形式">感知机学习算法的原始形式</h2>
+<p>采用随机梯度下降法不断地极小化目标函数。极小化的过程是一次随机选取一个误分类点使其梯度下降。</p>
 	  
 
 	  <div>
