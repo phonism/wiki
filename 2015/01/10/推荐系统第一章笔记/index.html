@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>统计学习方法第三章笔记 | Phonism的学习笔记</title>
+  <title>推荐系统第一章笔记 | Phonism的学习笔记</title>
   <meta name="author" content="Qi Lu">
   
-  <meta name="description" content="$k$近邻法
-$k$近邻 (k-nearest neighbor, k-NN) 是一种基于分类的回归方法。$k$近邻法的输入为实例的特征向量，对应于特征空间的点，输出为实例的类别，可以取多类。$k$近邻法实际上利用训练数据集对特征向量空间进行划分，并作为其分类的模型。
-$k$近邻算法
-$k$近邻算法">
+  <meta name="description" content="引言
+基本概念
+协同过滤推荐
+协同过滤的基本思想是，如果用户在过去有相同的偏好，那么在未来也会有相同的偏好。举例来说，如果用户A和用户B的购买经历在过去非常一致，那么A最近买了一本B没买过的书，那么这时我们就可以把这本书推荐给B。这种推荐模式是从大量集合中过滤出最有希望的推荐，而且用户是在隐式地与其">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="统计学习方法第三章笔记"/>
+  <meta property="og:title" content="推荐系统第一章笔记"/>
   <meta property="og:site_name" content="Phonism的学习笔记"/>
 
   
@@ -48,7 +48,7 @@ $k$近邻算法">
   <div class="container" id="container">
 	<div class="content">
 	  <div class="page-header">		
-  <h1><a class="brand" href="/wiki/">Phonism的学习笔记</a><span class="split"></span><span class="title">统计学习方法第三章笔记</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> Jan 7 2015</span></h1>
+  <h1><a class="brand" href="/wiki/">Phonism的学习笔记</a><span class="split"></span><span class="title">推荐系统第一章笔记</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> Jan 10 2015</span></h1>
 </div>		
 
 <div class="row page">
@@ -70,10 +70,17 @@ $k$近邻算法">
 	
 
 	  <!-- content -->
-	  <h1 id="$k$近邻法">$k$近邻法</h1>
-<p>$k$近邻 (k-nearest neighbor, k-NN) 是一种基于分类的回归方法。$k$近邻法的输入为实例的特征向量，对应于特征空间的点，输出为实例的类别，可以取多类。$k$近邻法实际上利用训练数据集对特征向量空间进行划分，并作为其分类的模型。</p>
-<h2 id="$k$近邻算法">$k$近邻算法</h2>
-<p>$k$近邻算法没有显式的学习过程。</p>
+	  <h1 id="引言">引言</h1>
+<h2 id="基本概念">基本概念</h2>
+<h3 id="协同过滤推荐">协同过滤推荐</h3>
+<p>协同过滤的基本思想是，如果用户在过去有相同的偏好，那么在未来也会有相同的偏好。举例来说，如果用户A和用户B的购买经历在过去非常一致，那么A最近买了一本B没买过的书，那么这时我们就可以把这本书推荐给B。这种推荐模式是从大量集合中过滤出最有希望的推荐，而且用户是在隐式地与其他人相互协作，所以这种技术叫做<strong>协同过滤</strong>(CF, Collaborative Filtering)。这种策略的优势在于系统不需要维护书的具体内容，体裁能数据。</p>
+<h3 id="基于内容的推荐">基于内容的推荐</h3>
+<p>一般来说，推荐系统有两个目的。一方面用于激发用户去做某件事，比如买一本书或者观赏一部电影；另一方面可以看作是解决信息过载的工具。</p>
+<p>基于内容推荐的核心是能够得到物品的描述和这些特征的重要纪录。基于内容的推荐有两个优点。首先不需要大规模用户就能够达到适度的推荐精准度。其次，一旦得到物品的属性就能立刻推荐新物品。</p>
+<h3 id="基于知识的推荐">基于知识的推荐</h3>
+<p>如果把注意力投向其他应用领域，比如消费类电子产品，就会涉及大量的单次购买者。这意味着我们可能无法依赖购买记录，而这是协同过滤和机遇内容过滤方法的前提条件。比如说推荐系统通过构建用户纪录或推荐其他人喜欢的相机，可能导致最终推荐系统只会推荐热销相机机型。此时系统就需要利用额外的因果知识生成推荐。比如基于约束的推荐，在数码领域中，基于约束的系统可能会用到相机特征的详细知识，比如分辨率， 重量和价格等。但是仅仅展现满足一周要求的特征的物品是不够的，缺少个性化，每个用户(需求特征相同的)将会得到相同的推荐集合。因此，基于约束的推荐同样需要维护用户纪录。同时，在这个推荐系统中还要涵盖用户交互的内容，因为在有些基于知识的推荐系统中，用户需求必须通过交互引导得出。</p>
+<h3 id="混合推荐方法">混合推荐方法</h3>
+<p>由于问题的背景不同，各种推荐方法可能会个有优缺点。因此我们可以组合不同的技术产生更好或者更精确的推荐。如果既有群体知识，又可以取得详尽的物品信息，那么把基于内容的技术和协同或社会化过滤相混合，在克服纯粹协同方法的规模膨胀问题时大有帮助。</p>
 	  
 
 	  <div>
@@ -86,30 +93,26 @@ $k$近邻算法">
 	
 	
 		
+			
+			
+		
+	
+		
 	
 		
 	
 		
 	
 		
-			
-		
 	
 		
-			
-			
-		
 	
-		
-			
-			
-			
 	
-		<li class="prev"><a href="/wiki/2015/01/07/统计学习方法第五章笔记/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
 	
 	<li><a href="/wiki/"><i class="fa fa-archive"></i>Home</a></li>
 	
-		<li class="next"><a href="/wiki/2015/01/07/统计学习方法第二章笔记/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
 	
 </ul>
 </div>
